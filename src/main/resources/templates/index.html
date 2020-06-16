@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<title>Ingreso de estudiante</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div>
+		<h1 class="text-center">Ingresar estudiante</h1>
+	</div>
+
+	<form th:action="@{/ingresarEstudiante}" th:object="${estudiante}"
+		method="post" class="main-form" novalidate>
+		<div class="col">
+			<div class="row">
+				<div class="form-group">
+					<label for="nombre">Nombre </label> <input th:field="*{nombre}"
+						id="nombre" type="text" placeholder="Nombre del estudiante"
+						name="nombre" class="form-control" /> <span th:errors="*{nombre}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label for="apellido">Apellido </label> <input
+						th:field="*{apellido}" id="apellido" type="text"
+						placeholder="Apellido del estudiante" name="apellido"
+						class="form-control" /> <span th:errors="*{apellido}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label for="carne">Carne </label> <input th:field="*{carne}"
+						id="carne" type="text" placeholder="Carne del estudiante"
+						name="carne" class="form-control" /> <span th:errors="*{carne}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label for="carrera">Carrera </label> <input th:field="*{carrera}"
+						id="carrera" type="text" placeholder="Carrera del estudiante"
+						name="carrera" class="form-control" /> <span
+						th:errors="*{carrera}" style="color: #E81505"></span>
+				</div>
+			</div>
+			<input type="submit" class="btn btn-primary"
+				value="Guardar estudiante">
+		</div>
+	</form>
+	<br>
+	<a href="/listado" class="btn btn-primary">Listado de estudiantes</a>
+	<form th:action="@{/borrarEstudiante}" method="post">
+		<label>Borrar estudiante: </label><input type="number" placeholder="Codigo"
+			name="codigo"><br> <input type="submit" value="Borrar estudiante">
+	</form>
+		<form th:action="@{/filtrarEstudiante}" method="get">
+		<label>Ingrese la busqueda: </label><input type="text" placeholder="Ingrese la busqueda"
+			name="cadena"><br> <input type="submit" value="Buscar estudiante">
+	</form>
+	<form th:action="@{/buscarYModificarEstudiante}" method="get">
+		<label>Modificar estudiante: </label><input type="number" placeholder="Codigo del estudiante"
+			name="codigo"><br> <input type="submit" value="Modificar estudiante">
+	</form>
+</body>
+</html>

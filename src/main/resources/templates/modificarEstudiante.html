@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<title>Modificar estudiante</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div>
+		<h1 class="text-center">Modificar estudiante</h1>
+	</div>
+
+	<form th:action="@{/modificarEstudiante}" th:object="${estudiante}"
+		method="post" class="main-form" novalidate>
+		<input th:field="*{cUsuario}"
+						id="cUsuario" type="hidden" 
+						th:value="${cUsuario}"
+						name="cUsuario"/> 
+		<div class="col">
+			<div class="row">
+				<div class="form-group">
+					<label for="nombre">Nombre </label> <input th:field="*{nombre}"
+						id="nombre" type="text" placeholder="Nombre del estudiante"
+						th:value="${nombre}"
+						name="nombre" class="form-control" /> <span th:errors="*{nombre}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label for="apellido">Apellido </label> <input
+						th:field="*{apellido}" id="apellido" type="text"
+						placeholder="Apellido del estudiante" name="apellido"
+						th:value="${apellido}"
+						class="form-control" /> <span th:errors="*{apellido}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label for="carne">Carne </label> <input th:field="*{carne}"
+						id="carne" type="text" placeholder="Carne del estudiante"
+						th:value="${carne}"
+						name="carne" class="form-control" /> <span th:errors="*{carne}"
+						style="color: #E81505"></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label for="carrera">Carrera </label> <input th:field="*{carrera}"
+						id="carrera" type="text" placeholder="Carrera del estudiante"
+						th:value="${carrera}"
+						name="carrera" class="form-control" /> <span
+						th:errors="*{carrera}" style="color: #E81505"></span>
+				</div>
+			</div>
+			<input type="submit" class="btn btn-primary"
+				value="Modificar estudiante">
+		</div>
+	</form>
+	<br>
+	<a href="/listado" class="btn btn-primary">Listado de estudiantes</a>
+</body>
+</html>
